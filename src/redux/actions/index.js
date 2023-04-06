@@ -11,7 +11,7 @@ export const searchName = createAsyncThunk(
         .get(`/weather?q=${name}&appid=${API_KEY}&units=metric`)
         .then((res) => res.data);
     } catch (error) {
-      return rejectWithValue(error.response.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );
@@ -24,7 +24,7 @@ export const searchId = createAsyncThunk(
         .get(`/weather?id=${id}&appid=${API_KEY}&units=metric`)
         .then((res) => res.data);
     } catch (error) {
-      return rejectWithValue(error.response.message);
+      return rejectWithValue(error.response.data.message);
     }
   }
 );

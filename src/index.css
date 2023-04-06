@@ -5,6 +5,15 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background-image: url('./static/images/desktop.jpg');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+}
+
+@media (max-width: 800px) {
+  body {
+    background-image: url('./static/images/mobile.jpg');
+  }
 }
 
 code {

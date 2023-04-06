@@ -1,0 +1,46 @@
+.container {
+  min-height: 100px;
+  background-color: rgba(55, 150, 150, 0.9);
+}
+
+.con_one {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.con_one img {
+  height: 25px;
+}
+
+.con_one h1 {
+  margin: 10px 0;
+  color: aliceblue;
+  letter-spacing: 2px;
+}
+
+.con_two {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.con_two a {
+  color: aliceblue;
+  text-align: center;
+  border-bottom: 1px solid transparent;
+  letter-spacing: 2px;
+  margin: 0 15px;
+  padding: 3px 0;
+  font-size: 17px;
+  min-width: 100px;
+}
+
+.con_two a:hover {
+  border-radius: 5px;
+  border-bottom: none !important;
+  color:rgb(240, 240, 240);
+  background-color: rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  transform: scale(1.1);
+}
