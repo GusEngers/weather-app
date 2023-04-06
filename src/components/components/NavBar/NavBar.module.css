@@ -40,7 +40,7 @@
   border-radius: 5px;
   border-bottom: none !important;
   color:rgb(240, 240, 240);
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.1);
   cursor: pointer;
   transform: scale(1.1);
 }

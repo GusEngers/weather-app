@@ -1,9 +1,10 @@
 import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchName } from '../../redux/actions';
+import style from './Home.module.css';
 
 export default function Home() {
-  const { cities, city, error } = useSelector((state) => state);
+  const { city, error } = useSelector((state) => state);
   const dispatch = useDispatch();
 
   const [search, setSearch] = React.useState('');
@@ -14,7 +15,7 @@ export default function Home() {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <form
         onSubmit={(event) => {
           event.preventDefault();
@@ -24,9 +25,9 @@ export default function Home() {
         <input
           type="text"
           placeholder="City name..."
+          className={style.search}
           onChange={(event) => handleSearch(event)}
         />
-        <input type="submit" value="Search" />
       </form>
       <div>
         {!!Object.entries(city).length ? (
