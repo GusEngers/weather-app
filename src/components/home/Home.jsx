@@ -2,6 +2,7 @@ import React from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { searchName } from '../../redux/actions';
 import style from './Home.module.css';
+import { HomeCard } from '../components/Cards/Cards';
 
 export default function Home() {
   const { city, error } = useSelector((state) => state);
@@ -31,7 +32,7 @@ export default function Home() {
       </form>
       <div>
         {!!Object.entries(city).length ? (
-          <h1>{city.name}</h1>
+          <HomeCard name={city.name}/>
         ) : !!error ? (
           <h1>{error}</h1>
         ) : null}
