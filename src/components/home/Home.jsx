@@ -32,7 +32,7 @@ export default function Home() {
       </form>
       <div>
         {!!Object.entries(city).length ? (
-          <HomeCard name={city.name}/>
+          <HomeCard city={city}/>
         ) : !!error ? (
           <h1>{error}</h1>
         ) : null}
