@@ -91,19 +91,47 @@ export function FavoriteCard({ city }) {
   );
 }
 
-/* {
-	"weather": {
-		"main": "Grupo meteorológico",
-		"icon": "Icono"
-	},
-	"main": {
-		"temp": "temperatura",
-		"temp_min": "temperatura mínima",
-		"temp_max": "temperatura máxima",
-	},
-	"sys": {
-		"country": "Código región"
-	},
-	"id": "id ciudad",
-	"name": "nombre ciudad"
-} */
+export function DetailCard({ city }) {
+  const addDate = (miliseconds) => {
+    let date = new Date(miliseconds);
+    return `${date.getHours()}:${date.getMinutes()} Hs.`;
+  };
+
+  return (
+    <div>
+      <div className={style.dc_con}>
+        <h1>{`${city.name}, ${city.sys.country}`}</h1>
+        <h3>Coordinates</h3>
+        <p>{`Longitude: ${city.coord.lon}`}</p>
+        <p>{`Latitude: ${city.coord.lat}`}</p>
+        <h3>Clouds</h3>
+        <p>{`${city.clouds.all}%`}</p>
+        <h3>Wind</h3>
+        <p>{`${city.wind.speed}m/s at ${city.wind.deg}°`}</p>
+        <h3>Visibility</h3>
+        <p>{`${city.visibility}m`}</p>
+        <h3>Sunrise</h3>
+        <p>{addDate(city.sys.sunrise)}</p>
+      </div>
+      <div className={style.dc_con}>
+        <img
+          src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+          alt={city.name}
+        />
+        <h1>{city.weather[0].main}</h1>
+        <p>{city.weather[0].description}</p>
+        <h1>{`${city.main.temp}°C`}</h1>
+        <h3>Thermal Sensation</h3>
+        <p>{`${city.main.feels_like}°C`}</p>
+        <h3>Maximun</h3>
+        <p>{`${city.main.temp_max}°C`}</p>
+        <h3>Minimun</h3>
+        <p>{`${city.main.temp_min}°C`}</p>
+        <h3>Pressure</h3>
+        <p>{`${city.main.pressure}hPa`}</p>
+        <h3>Humidity</h3>
+        <p>{`${city.main.humidity}%`}</p>
+      </div>
+    </div>
+  );
+}
