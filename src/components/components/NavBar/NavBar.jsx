@@ -21,7 +21,7 @@ export default function NavBar() {
           Home
         </Link>
         <Link
-          to={'#'}
+          to={'/favorites'}
           style={{
             textDecoration: 'none',
             borderBottom:
