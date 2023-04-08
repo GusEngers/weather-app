@@ -22,7 +22,7 @@ export default function Home() {
         onSubmit={(event) => {
           event.preventDefault();
           dispatch(searchName(search));
-          setSearch('')
+          setSearch('');
         }}
       >
         <input

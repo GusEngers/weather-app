@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import style from './Favorites.module.css';
+import { FavoriteCard } from '../components/Cards/Cards';
 
 export default function Favorites() {
   const { cities } = useSelector((state) => state);
@@ -17,8 +18,12 @@ export default function Favorites() {
   } else {
     return (
       <div className={style.container}>
-        {cities.map((city) => <h1 key={city.id}>{city.name}</h1>)}
+        <div className={style.container_favorite}>
+          {cities.map((city) => (
+            <FavoriteCard key={city.id} city={city} />
+          ))}
+        </div>
       </div>
-    )
+    );
   }
 }

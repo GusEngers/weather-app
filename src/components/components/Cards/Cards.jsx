@@ -9,9 +9,10 @@ export function HomeCard({ city }) {
   const navigate = useNavigate();
   const { cities } = useSelector((state) => state);
 
-  const [favorite, setFavorite] = React.useState(() =>
-    cities.some((ct) => ct.id === city.id)
-  );
+  const isFavorite = () => {
+    if (!cities.find((ct) => ct.id === city.id)) return false;
+    return true;
+  };
 
   return (
     <div className={style.container}>
@@ -34,16 +35,14 @@ export function HomeCard({ city }) {
         <button
           onClick={(event) => {
             event.preventDefault();
-            if (!favorite) {
-              dispatch(addCity(city));
-              setFavorite(true);
-            } else {
+            if (isFavorite()) {
               dispatch(deleteCity(city.id));
-              setFavorite(false);
+            } else {
+              dispatch(addCity(city));
             }
           }}
         >
-          {favorite ? 'Favorite ♥' : 'Favorite ♡'}
+          {isFavorite() ? 'Favorite ♥' : 'Favorite ♡'}
         </button>
         <button
           onClick={(event) => {
@@ -52,6 +51,40 @@ export function HomeCard({ city }) {
           }}
         >
           {'Detail →'}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export function FavoriteCard({ city }) {
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  return (
+    <div className={style.container_fav}>
+      <h1>{city.name}</h1>
+      <img
+        src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
+        alt={city.name}
+      />
+      <h3>{`${city.main.temp}°C`}</h3>
+      <div>
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            dispatch(deleteCity(city.id));
+          }}
+        >
+          {'♥'}
+        </button>
+        <button
+          onClick={(event) => {
+            event.preventDefault();
+            navigate(`/city/${city.id}`);
+          }}
+        >
+          {'→'}
         </button>
       </div>
     </div>

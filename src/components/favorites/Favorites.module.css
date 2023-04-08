@@ -16,3 +16,15 @@
   justify-content: center;
   background-color: rgba(55, 150, 150, 0.8);
 }
+
+.container_favorite {
+  min-height: 73vh;
+  margin: 10px 0;
+  width: 90%;
+  border-radius: 50px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  background-color: rgba(55, 150, 150, 0.8);
+}
