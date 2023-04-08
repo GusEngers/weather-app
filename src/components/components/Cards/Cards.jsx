@@ -1,11 +1,17 @@
-import { useDispatch } from 'react-redux';
+import React from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
 import style from './Cards.module.css';
-import { addCity } from '../../../redux/actions';
+import { addCity, deleteCity } from '../../../redux/actions';
 
 export function HomeCard({ city }) {
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const { cities } = useSelector((state) => state);
+
+  const [favorite, setFavorite] = React.useState(() =>
+    cities.some((ct) => ct.id === city.id)
+  );
 
   return (
     <div className={style.container}>
@@ -14,7 +20,7 @@ export function HomeCard({ city }) {
         <img
           src={`http://openweathermap.org/img/wn/${city.weather[0].icon}@2x.png`}
           alt={city.name}
-          />
+        />
         <h3>{city.weather[0].main}</h3>
       </div>
       <div>
@@ -28,10 +34,16 @@ export function HomeCard({ city }) {
         <button
           onClick={(event) => {
             event.preventDefault();
-            dispatch(addCity(city));
+            if (!favorite) {
+              dispatch(addCity(city));
+              setFavorite(true);
+            } else {
+              dispatch(deleteCity(city.id));
+              setFavorite(false);
+            }
           }}
         >
-          Favorite
+          {favorite ? 'Favorite ♥' : 'Favorite ♡'}
         </button>
         <button
           onClick={(event) => {
@@ -39,7 +51,7 @@ export function HomeCard({ city }) {
             navigate(`/city/${city.id}`);
           }}
         >
-          Detail
+          {'Detail →'}
         </button>
       </div>
     </div>

@@ -1,7 +1,7 @@
 /* Home Card */
 .container {
   min-height: 65vh;
-  margin-top: 3vh; 
+  margin-top: 3vh;
   border-radius: 50px;
   background-color: rgba(55, 150, 150, 0.5);
   display: flex;
@@ -60,20 +60,18 @@
   font-size: 20px;
   padding: 5px 0;
   letter-spacing: 2px;
-  width: 120px;
+  width: 130px;
   margin: 10px 0;
-  background-color: rgba(240, 248, 255, 0.9);
-  border: 2px solid rgb(187, 13, 13);
+  color: aliceblue;
+  background-color: transparent;
+  border: 1px solid white;
   border-radius: 10px;
-}
-
-.container div:nth-child(3) button:nth-child(2) {
-  border: 2px solid rgb(13, 74, 187);
 }
 
 .container div:nth-child(3) button:hover {
   transform: translateY(-5px);
-  background-color: rgba(240, 248, 255, 0.7);
+  color: rgb(31, 31, 31);
+  background-color: rgba(255, 255, 255, 0.7);
   cursor: pointer;
 }
 
