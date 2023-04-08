@@ -11,20 +11,31 @@ const initialState = {
   cities: [],
   city: {},
   error: null,
+  loading: false,
 };
 
 const rootReducer = createReducer(initialState, (builder) =>
   builder
+    .addCase(searchName.pending, (state) => {
+      state.loading = true;
+    })
     .addCase(searchName.fulfilled, (state, action) => {
+      state.loading = false;
       state.city = action.payload;
     })
     .addCase(searchName.rejected, (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     })
+    .addCase(searchId.pending, (state) => {
+      state.loading = true;
+    })
     .addCase(searchId.fulfilled, (state, action) => {
+      state.loading = false;
       state.city = action.payload;
     })
     .addCase(searchId.rejected, (state, action) => {
+      state.loading = false;
       state.error = action.payload;
     })
     .addCase(addCity, (state, action) => {
