@@ -4,6 +4,7 @@ import { useParams } from 'react-router-dom';
 import { searchId } from '../../redux/actions';
 import Loading from '../components/Loading/Loading';
 import { DetailCard } from '../components/Cards/Cards';
+import Error from '../components/Error/Error';
 
 export default function Detail() {
   const dispatch = useDispatch();
@@ -29,8 +30,8 @@ export default function Detail() {
       </div>
     );
   } else if (!!error) {
-    return <h1>{error}</h1>;
+    return <Error error={error} />;
   } else if (!!Object.entries(city).length) {
-    return <DetailCard city={city}/>;
+    return <DetailCard city={city} />;
   }
 }

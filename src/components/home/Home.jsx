@@ -4,6 +4,7 @@ import { searchName } from '../../redux/actions';
 import style from './Home.module.css';
 import { HomeCard } from '../components/Cards/Cards';
 import Loading from '../components/Loading/Loading';
+import Error from '../components/Error/Error';
 
 export default function Home() {
   const { city, error, loading } = useSelector((state) => state);
@@ -33,12 +34,12 @@ export default function Home() {
         />
       </form>
       <div>
-        {!!Object.entries(city).length ? (
-          <HomeCard city={city} />
-        ) : !!error ? (
-          <h1>{error}</h1>
-        ) : loading ? (
+        {loading ? (
           <Loading />
+        ) : !!error ? (
+          <Error error={error} />
+        ) : !!Object.entries(city).length ? (
+          <HomeCard city={city} />
         ) : null}
       </div>
     </div>

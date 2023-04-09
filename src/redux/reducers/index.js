@@ -46,6 +46,7 @@ const rootReducer = createReducer(initialState, (builder) =>
     })
     .addCase(deleteError, (state) => {
       state.error = null;
+      state.city = {};
     })
 );
 
