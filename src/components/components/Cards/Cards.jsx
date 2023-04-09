@@ -94,11 +94,11 @@ export function FavoriteCard({ city }) {
 export function DetailCard({ city }) {
   const addDate = (miliseconds) => {
     let date = new Date(miliseconds);
-    return `${date.getHours()}:${date.getMinutes()} Hs.`;
+    return `${date.getHours()}:${date.getMinutes()}Hs.`;
   };
 
   return (
-    <div>
+    <div className={style.dc_container}>
       <div className={style.dc_con}>
         <h1>{`${city.name}, ${city.sys.country}`}</h1>
         <h3>Coordinates</h3>
@@ -110,6 +110,8 @@ export function DetailCard({ city }) {
         <p>{`${city.wind.speed}m/s at ${city.wind.deg}°`}</p>
         <h3>Visibility</h3>
         <p>{`${city.visibility}m`}</p>
+        <h3>Humidity</h3>
+        <p>{`${city.main.humidity}%`}</p>
         <h3>Sunrise</h3>
         <p>{addDate(city.sys.sunrise)}</p>
       </div>
@@ -129,8 +131,6 @@ export function DetailCard({ city }) {
         <p>{`${city.main.temp_min}°C`}</p>
         <h3>Pressure</h3>
         <p>{`${city.main.pressure}hPa`}</p>
-        <h3>Humidity</h3>
-        <p>{`${city.main.humidity}%`}</p>
       </div>
     </div>
   );
